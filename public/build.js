@@ -14232,8 +14232,8 @@ $__System.register("49", ["33", "34", "35", "48", "4a"], function (_export) {
   var _Promise, getFacebookEvents, _, getSiteEvents, moment;
 
   function type(d) {
-    if (d.start_time) d.start_time = moment(d.start_time, "YY-MM-DD HH:mm");
-    if (d.end_time) d.end_time = moment(d.end_time, "YY-MM-DD HH:mm");
+    if (d.start_time) d.start_time = moment(d.start_time, "YYYY-MM-DD HH:mm").toDate();
+    if (d.end_time) d.end_time = moment(d.end_time, "YYYY-MM-DD HH:mm").toDate();
   }
 
   function getAllEvents() {
@@ -24752,12 +24752,12 @@ $__System.register("70", ["35", "60", "4a"], function (_export) {
     }
   };
 });
-$__System.register("1", ["35", "49", "70", "a"], function (_export) {
+$__System.register("1", ["35", "49", "70", "4a", "a"], function (_export) {
   // import d3 from "d3";
 
   "use strict";
 
-  var _, getAllEvents, noOverlap, margin, width, height, svg, force, x, y, yAxis, radiusRange, radius, fontSize;
+  var _, getAllEvents, noOverlap, moment, margin, width, height, svg, force, x, y, yAxis, radiusRange, radius, fontSize;
 
   function radiusAccessor(d) {
     return d.attending_count + d.interested_count;
@@ -24774,7 +24774,9 @@ $__System.register("1", ["35", "49", "70", "a"], function (_export) {
       getAllEvents = _3.getAllEvents;
     }, function (_4) {
       noOverlap = _4["default"];
-    }, function (_a) {}],
+    }, function (_a) {
+      moment = _a["default"];
+    }, function (_a2) {}],
     execute: function () {
       margin = { top: 100, right: 20, bottom: 30, left: 20 };
       width = 900 - margin.left - margin.right;
@@ -24784,7 +24786,7 @@ $__System.register("1", ["35", "49", "70", "a"], function (_export) {
       x = d3.scale.ordinal().rangePoints([width / 3, 2 * width / 3]);
       y = noOverlap().maxGap(600).pixelsPerMinute(1 / 75);
       yAxis = d3.svg.axis().scale(y).orient("left").tickSize(-width).tickPadding(0).tickFormat(d3.time.format("%B %Y")).tickValues(["March 2015", "October 2015", "November 2015", "December 2015", "January 2016", "February 2016", "March 2016", "April 2016"].map(function (d) {
-        return new Date(d);
+        return moment(d, "MMMM YYYY").toDate();
       }));
       radiusRange = [35, 130];
       radius = d3.scale.sqrt().range(radiusRange).clamp(true);
