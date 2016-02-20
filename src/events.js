@@ -1,11 +1,12 @@
 import _ from "lodash";
+import moment from "moment";
 
 import { getFacebookEvents } from "./facebook";
 import { getSiteEvents } from "./site";
 
 function type(d) {
-  if (d.start_time) d.start_time = new Date(d.start_time);
-  if (d.end_time) d.end_time = new Date(d.end_time);
+  if (d.start_time) d.start_time = moment(d.start_time, "YY-MM-DD HH:mm");
+  if (d.end_time) d.end_time = moment(d.end_time, "YY-MM-DD HH:mm");
 }
 
 export function getAllEvents() {
@@ -23,6 +24,7 @@ export function getAllEvents() {
           siteEvent.interested_count = facebookEvent.interested_count;
         }
       });
+      events.forEach(type);
       return events;
     })
   })

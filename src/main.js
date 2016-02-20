@@ -25,11 +25,6 @@ let force = d3.layout.force()
     .theta(0.8)
     .alpha(0.1);
 
-function type(d) {
-  d.start_time = new Date(d.start_time);
-  d.end_time = new Date(d.end_time);
-}
-
 let x = d3.scale.ordinal()
     .rangePoints([width / 3, 2 * width / 3])
 
@@ -75,7 +70,6 @@ function categoryAccessor(d) {
 
 getAllEvents().then((nodes) => {
 
-  nodes.forEach(type);
   nodes = nodes.sort((a,b) => d3.ascending(a.start_time, b.start_time));
 
   // Colours
