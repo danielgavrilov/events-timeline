@@ -8,24 +8,6 @@ function type(d) {
   if (d.end_time) d.end_time = new Date(d.end_time);
 }
 
-// export function getAllEvents() {
-//   return Promise.all([
-//     getFacebookEvents("https://graph.facebook.com/v2.5/UCLUTechSoc/events"),
-//     getSiteEvents()
-//   ]).then(([facebookEvents, siteEvents]) => {
-//     let events = _.clone(siteEvents);
-//     facebookEvents.forEach((facebookEvent) => {
-//       let id = facebookEvent.id;
-//       let siteEvent = _.find(events, (event) => event.facebook_id == id);
-//       if (siteEvent) {
-//         siteEvent.attending_count = facebookEvent.attending_count;
-//         siteEvent.interested_count = facebookEvent.interested_count;
-//       }
-//     });
-//     return events;
-//   });
-// }
-
 export function getAllEvents() {
   return getSiteEvents().then((siteEvents) => {
     let ids = _.compact(siteEvents.map(d => d.facebook_id));
