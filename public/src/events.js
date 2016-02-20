@@ -5,8 +5,8 @@ import { getFacebookEvents } from "./facebook";
 import { getSiteEvents } from "./site";
 
 function type(d) {
-  if (d.start_time) d.start_time = moment(d.start_time, "YY-MM-DD HH:mm");
-  if (d.end_time) d.end_time = moment(d.end_time, "YY-MM-DD HH:mm");
+  if (d.start_time) d.start_time = moment(d.start_time, "YYYY-MM-DD HH:mm").toDate();
+  if (d.end_time) d.end_time = moment(d.end_time, "YYYY-MM-DD HH:mm").toDate();
 }
 
 export function getAllEvents() {
