@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Timeline of TechSoc Events</title>
+    <style>
+
+    #legend {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .intro {
+      width: 900px;
+      margin: 50px auto 80px;
+      line-height: 1.4;
+    }
+
+    h1, p {
+      font-family: Helvetica, Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin: 0 0 20px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 100;
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .axis {
+      font: 11px sans-serif;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #ddd;
+      shape-rendering: crispEdges;
+    }
+
+    .axis path {
+      stroke: none;
+    }
+
+    .axis text {
+      fill: black;
+    }
+
+    text {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .events text {
+      font-weight: bold;
+      text-anchor: middle;
+      fill: white;
+      text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    }
+
+    circle {
+      transform: scale(1);
+      transition: transform 200ms ease;
+    }
+
+    svg a:hover circle {
+      transform: scale(1.05);
+    }
+
+    .now {
+      fill: rgba(220, 13, 13, 0.2);
+      stroke: none;
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="intro">
+      <h1>Timeline of TechSoc Events</h1>
+      <p>
+        The <strong>area</strong> of a circle roughly represents the number of <strong>interested + going</strong> on Facebook.<br>
+        &hellip;unless that number is less than 30.
+      </p>
+    </div>
+
+    <svg id="legend"></svg>
+    <svg id="visualisation"></svg>
+
+    <!-- d3plus doesn't work well when installed using jspm, so have to do this -->
+    <script src="vendor/d3.v3.min.js"></script>
+    <script src="vendor/d3plus.min.js"></script>
+
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+
+    if (window.System) {
+      System.import('src/main');
+    } else {
+      document.write("<script src='build.js'><\/script>");
+    }
+
+    </script>
+  </body>
+</html>
