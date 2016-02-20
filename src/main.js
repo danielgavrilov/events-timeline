@@ -1,4 +1,5 @@
 import _ from "lodash";
+import moment from "moment";
 import "d3-legend";
 // import d3 from "d3";
 
@@ -47,7 +48,7 @@ var yAxis = d3.svg.axis()
       "February 2016",
       "March 2016",
       "April 2016"
-    ].map(d => new Date(d)))
+    ].map(d => moment(d, "MMMM YYYY").toDate()));
 
 let radiusRange = [35, 130];
 
