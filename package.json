@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "deploy": "jspm bundle-sfx src/main && git commit -m 'Deploy' -- public && git subtree push --prefix public origin gh-pages",
+    "build": "jspm bundle-sfx src/main",
+    "deploy": "git subtree push --prefix public origin gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Gavrilov",
