@@ -13498,7 +13498,7 @@ $__System.register("34", ["35", "36"], function (_export) {
       axios = _3["default"];
     }],
     execute: function () {
-      ACCESS_TOKEN = "CAAK3kpvZBViIBAAs9SZBVlLXDnQzO8bZAvwjiB7UdzBuKPJsSqiSiYoND0ct8GQsmcGmBD5Y8pCTptMSNTNp9OflfyBLZBq0ijGoLZCbJifZCNcTtQjHh2MkdlW7fmOgFPymnrSIQpVOmz1cQA7TIwzUwzVzvcTtWkOag9OXQvVZC2jMKGU1gUW3fQQWPOZCLCoZD";
+      ACCESS_TOKEN = "CAAK3kpvZBViIBAOEZC6B1cXrA1HpCNSSz5WpTNpHUwWbSuSKlQKPtx3s28rKrSdk1ViWhk0f8g5XdppQAMsHl0FAhcKHYctj6CxiGC9BbG81jXoWIOYBOKftYB1KpLZCkBtQZCkbuo89JWoCmKazsAWih7MdMK59UbsPGHzYkP4ZAKZCjKXqTpowRVj3k9w14ZD";
       defaults = {
         access_token: ACCESS_TOKEN,
         limit: 200,
@@ -14214,7 +14214,7 @@ $__System.register("48", ["36"], function (_export) {
   _export("getSiteEvents", getSiteEvents);
 
   function getSiteEvents() {
-    return axios.get("https://uclutech.com/data/events.json").then(function (_ref) {
+    return axios.get("https://techsoc.io/data/events.json").then(function (_ref) {
       var data = _ref.data;
 
       return data;
