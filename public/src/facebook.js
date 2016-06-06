@@ -1,7 +1,7 @@
 import _ from "lodash";
 import axios from "axios";
 
-const ACCESS_TOKEN = "CAAK3kpvZBViIBAOEZC6B1cXrA1HpCNSSz5WpTNpHUwWbSuSKlQKPtx3s28rKrSdk1ViWhk0f8g5XdppQAMsHl0FAhcKHYctj6CxiGC9BbG81jXoWIOYBOKftYB1KpLZCkBtQZCkbuo89JWoCmKazsAWih7MdMK59UbsPGHzYkP4ZAKZCjKXqTpowRVj3k9w14ZD";
+const ACCESS_TOKEN = "EAAK3kpvZBViIBAMj2jeG3ZBEeUaUQxHd43KwBgvRwUhkUYmgZBeJsxnDyiIY8SReZA47UEXFMQf2YIogXkZAahEAbb3nmgTSVMRDuCBvPMf6mOxkTKe0pUrxKadsZB9Lpcmb403fy32RpL2ROO0qBmQ2p6zdBsjXoZD";
 
 const defaults = {
   access_token: ACCESS_TOKEN,
