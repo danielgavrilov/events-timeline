@@ -14,7 +14,7 @@ export function getAllEvents() {
     let ids = _.compact(siteEvents.map(d => d.facebook_id));
     let chunked = _.chunk(ids, 50);
     let events = _.clone(siteEvents);
-    return Promise.all(chunked.map(ids => getFacebookEvents("https://graph.facebook.com/v2.5/", { ids: ids.join(",") }))).then(facebookEvents => {
+    return Promise.all(chunked.map(ids => getFacebookEvents("https://graph.facebook.com/v2.6/", { ids: ids.join(",") }))).then(facebookEvents => {
       facebookEvents = _.flatten(facebookEvents);
       facebookEvents.forEach((facebookEvent) => {
         let id = facebookEvent.id;
