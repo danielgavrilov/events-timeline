@@ -14244,7 +14244,7 @@ $__System.register("49", ["33", "34", "35", "48", "4a"], function (_export) {
       var chunked = _.chunk(ids, 50);
       var events = _.clone(siteEvents);
       return _Promise.all(chunked.map(function (ids) {
-        return getFacebookEvents("https://graph.facebook.com/v2.5/", { ids: ids.join(",") });
+        return getFacebookEvents("https://graph.facebook.com/v2.6/", { ids: ids.join(",") });
       })).then(function (facebookEvents) {
         facebookEvents = _.flatten(facebookEvents);
         facebookEvents.forEach(function (facebookEvent) {
