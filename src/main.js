@@ -8,7 +8,7 @@ import noOverlap from "./no-overlap";
 
 let margin = {top: 100, right: 20, bottom: 30, left: 20},
     width = 900 - margin.left - margin.right,
-    height = 4500 - margin.top - margin.bottom;
+    height = 6000 - margin.top - margin.bottom;
 
 let svg = d3.select("#visualisation")
     .attr("width", width + margin.left + margin.right)
@@ -33,22 +33,13 @@ let y = noOverlap()
     .maxGap(600)
     .pixelsPerMinute(1 / 75);
 
-var yAxis = d3.svg.axis()
+let yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
     .tickSize(-width)
     .tickPadding(0)
     .tickFormat(d3.time.format("%B %Y"))
-    .tickValues([
-      "March 2015",
-      "October 2015",
-      "November 2015",
-      "December 2015",
-      "January 2016",
-      "February 2016",
-      "March 2016",
-      "April 2016"
-    ].map(d => moment(d, "MMMM YYYY").toDate()));
+    .ticks(30);
 
 let radiusRange = [35, 130];
 
