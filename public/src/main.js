@@ -34,7 +34,6 @@ let svg = root.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 let force = d3.layout.force()
-    .size([width, height])
     .linkStrength(0.1)
     .friction(0.5)
     .linkDistance(20)
