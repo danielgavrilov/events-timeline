@@ -52,7 +52,7 @@ let fontSize = d3.scale.linear()
     .range([10, 24])
     .clamp(true)
 
-function radiusAccessor(d) {
+function totalAccessor(d) {
   return d.attending_count + d.interested_count;
 }
 
@@ -115,7 +115,7 @@ getAllEvents().then((nodes) => {
 
   y.build([nodes.map(d => d.start_time)]);
 
-  radius.domain([30, d3.max(nodes, radiusAccessor)]);
+  radius.domain([30, d3.max(nodes, totalAccessor)]);
 
   svg.append("g")
       .attr("class", "y axis")
@@ -153,7 +153,7 @@ getAllEvents().then((nodes) => {
       .call(legend)
 
   nodes.forEach((d,i) => {
-    let total = radiusAccessor(d);
+    let total = totalAccessor(d);
     d.radius = total ? radius(total) : radius.range()[0];
     d.cy = d.y = y(d.start_time);
     d.cx = d.x = x(categoryAccessor(d));
