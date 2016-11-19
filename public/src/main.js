@@ -124,12 +124,21 @@ getAllEvents().then((nodes) => {
       .style("text-anchor", "start")
       .attr("y", 15)
 
-  svg.append("rect")
+  let now = svg.append("g")
       .attr("class", "now")
-      .attr("x",0)
-      .attr("y", y(new Date()))
+      .attr("transform", d => `translate(0, ${ y(new Date()) })`)
+
+  now.append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
       .attr("width", width)
       .attr("height", 1)
+
+  now.append("text")
+      .attr("x", 0)
+      .attr("y", 15)
+      .attr("dy", ".32em")
+      .text("Today")
 
   let legend = d3.legend.color()
       .shape("circle")
