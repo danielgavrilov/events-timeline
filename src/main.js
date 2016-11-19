@@ -189,7 +189,7 @@ getAllEvents().then((nodes) => {
     .selectAll(".event")
       .data(nodes)
     .enter().append("a")
-      .attr("xlink:href", d => `http://uclutech.com${d.url}`)
+      .attr("xlink:href", d => `http://techsoc.io${d.url}`)
       .attr("target", "_blank")
     .append("g")
       .attr("class", "event")
