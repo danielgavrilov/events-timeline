@@ -207,5 +207,12 @@ export default function(collections) {
     return noOverlap;
   };
 
+  noOverlap.reverse = function() {
+    let range = noOverlap.range();
+    let last = range[range.length - 1];
+    noOverlap.range(range.map(d => -d + last));
+    return noOverlap;
+  };
+
   return noOverlap;
 }
