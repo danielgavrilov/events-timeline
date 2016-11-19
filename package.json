@@ -11,7 +11,7 @@
   "author": "Daniel Gavrilov",
   "license": "MIT",
   "devDependencies": {
-    "jspm": "^0.16.29"
+    "jspm": "^0.16.48"
   },
   "jspm": {
     "directories": {
