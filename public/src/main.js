@@ -113,7 +113,7 @@ getAllEvents().then((nodes) => {
 
   x.domain(xDomain);
 
-  y.build([nodes.map(d => d.start_time)]);
+  y.build([nodes.map(d => d.start_time)]).reverse();
 
   radius.domain([30, d3.max(nodes, totalAccessor)]);
 
