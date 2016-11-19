@@ -6,14 +6,31 @@ import "d3-legend";
 import { getAllEvents } from "./events";
 import noOverlap from "./no-overlap";
 
-let margin = {top: 100, right: 20, bottom: 30, left: 20},
-    width = 900 - margin.left - margin.right,
-    height = 6000 - margin.top - margin.bottom;
+let margin = {top: 200, right: 20, bottom: 30, left: 20},
+    width,
+    height;
 
-let svg = d3.select("#visualisation")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+let root = d3.select("#visualisation");
+
+function resize() {
+  root.attr("width", width)
+  .attr("height", height);
+}
+
+function setWidth(x) {
+  width = x + margin.left + margin.right;
+  resize();
+}
+
+function setHeight(x) {
+  height = x + margin.top + margin.bottom;
+  resize();
+}
+
+setWidth(900);
+setHeight(3000);
+
+let svg = root.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 let force = d3.layout.force()
@@ -161,6 +178,8 @@ getAllEvents().then((nodes) => {
 
   let maxRadius = 25;
   let padding = 3;
+
+  setHeight(_.max(nodes.map(d => d.y + d.radius)));
 
   let events = svg.append("g")
       .attr("class", "events")
