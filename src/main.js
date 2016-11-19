@@ -180,6 +180,10 @@ getAllEvents().then((nodes) => {
 
   setHeight(_.max(nodes.map(d => d.y + d.radius)));
 
+  function future(date) {
+    return date > new Date();
+  }
+
   let events = svg.append("g")
       .attr("class", "events")
     .selectAll(".event")
@@ -194,9 +198,11 @@ getAllEvents().then((nodes) => {
       .attr("cx", 0)
       .attr("cy", 0)
       .style("fill", d => color(categoryAccessor(d)))
+      .style("opacity", d => future(d.start_time) ? 0.5 : null)
 
   let labels = events.append("text")
       .style("font-size", d => fontSize(d.radius))
+      .style("font-style", d => future(d.start_time) ? "italic" : null)
       .text(d => {
         if (d.label && /session|lesson/i.test(d.title)) {
           return `${d.label} - ${d.title}`;
