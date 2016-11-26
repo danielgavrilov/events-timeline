@@ -149,8 +149,8 @@ getAllEvents().then((nodes) => {
 
   setHeight(_.max(nodes.map(d => d.y + d.radius)));
 
-  function future(date) {
-    return date > new Date();
+  function future(d) {
+    return d.start_time > new Date();
   }
 
   let events = svg.append("g")
@@ -162,16 +162,18 @@ getAllEvents().then((nodes) => {
       .attr("target", "_blank")
     .append("g")
       .attr("class", "event")
+      .classed("future", d => future(d))
 
   let circles = events.append("circle")
       .attr("cx", 0)
       .attr("cy", 0)
-      .style("fill", d => color(categoryAccessor(d)))
-      .style("opacity", d => future(d.start_time) ? 0.5 : null)
+      .style("fill", d => future(d) ? "rgba(255,255,255,.05)" : color(categoryAccessor(d)))
+      .style("stroke-width", d => future(d) ? 4 : 0)
+      .style("stroke", d => future(d) ? color(categoryAccessor(d)) : "none")
 
   let labels = events.append("text")
       .style("font-size", d => fontSize(d.radius))
-      .style("font-style", d => future(d.start_time) ? "italic" : null)
+      .style("font-style", d => future(d) ? "italic" : null)
       .text(d => {
         if (d.label && /session|lesson/i.test(d.title)) {
           return `${d.label} - ${d.title}`;
@@ -179,7 +181,8 @@ getAllEvents().then((nodes) => {
           return d.title;
         }
       })
-      .style("fill", "rgba(255,255,255,0)")
+      .style("fill", d => future(d) ? color(categoryAccessor(d)) : "white")
+      .style("opacity", 0)
       .each(function(d) {
         let padding = 4;
         let size = (d.radius - padding) * 2;
@@ -205,7 +208,7 @@ getAllEvents().then((nodes) => {
       .each("end", function(d, i) {
         d3.select(this.nextSibling)
           .transition()
-          .style("fill", "rgba(255,255,255,1)")
+          .style("opacity", 1)
           .duration(1000)
       })
 
