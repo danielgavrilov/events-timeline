@@ -156,17 +156,17 @@ getAllEvents().then((nodes) => {
       .attr("dy", ".32em")
       .text("Today")
 
-  let legend = d3.legend.color()
-      .shape("circle")
-      .scale(color)
-
-  d3.select("#legend")
-      .attr("width", 200)
-      .attr("height", 600)
-    .append("g")
-      .attr("transform", "translate(20,20)")
-      .attr("class", "legend")
-      .call(legend)
+  // let legend = d3.legend.color()
+  //     .shape("circle")
+  //     .scale(color)
+  //
+  // d3.select("#legend")
+  //     .attr("width", 200)
+  //     .attr("height", 600)
+  //   .append("g")
+  //     .attr("transform", "translate(20,20)")
+  //     .attr("class", "legend")
+  //     .call(legend)
 
   nodes.forEach((d,i) => {
     let total = totalAccessor(d);
