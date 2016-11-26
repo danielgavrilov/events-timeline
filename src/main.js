@@ -47,7 +47,7 @@ let x = d3.scale.ordinal()
 
 let y = noOverlap()
     .maxGap(600)
-    .pixelsPerMinute(1 / 75);
+    .pixelsPerMinute(1 / 65);
 
 let yAxis = d3.svg.axis()
     .scale(y)
