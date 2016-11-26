@@ -175,7 +175,7 @@ getAllEvents().then((nodes) => {
       .style("font-size", d => fontSize(d.radius))
       .style("font-style", d => future(d) ? "italic" : null)
       .text(d => {
-        if (d.label && /session|lesson/i.test(d.title)) {
+        if (d.label && /session|lesson|meetup/i.test(d.title)) {
           return `${d.label} - ${d.title}`;
         } else {
           return d.title;
